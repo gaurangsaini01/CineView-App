@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import MovieCard from "../Components/MovieCard";
+import Loader from "../Components/Loader";
 
 function Home() {
   const { loading, movies } = useContext(AppContext);
@@ -10,7 +11,7 @@ function Home() {
         <h2>Top Trending Movies</h2>
       </div>
       {loading ? (
-        <div>Loading</div>
+        <div><Loader></Loader></div>
       ) : (
         <div className="flex flex-wrap items-center justify-center gap-y-[4vh] gap-x-[5vw]">
           {movies.map((movie) => (
