@@ -7,32 +7,32 @@ import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="w-full sticky bottom-0 flex items-center justify-center gap-[5vw] sm:gap-[10vw] bg-gray-500 py-2 sm:py-4">
+    <div className="w-full  sticky bottom-0 flex items-center justify-center gap-[5vw] sm:gap-[10vw] bg-gray-600 py-2 sm:py-3">
       <NavLink to="/">
-        <div className="flex text-white flex-col items-center justify-center">
+        <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-white flex-col items-center justify-center">
           <FaFire />
-          <p className=" font-semibold">Trending</p>
+          <p className=" font-medium">Trending</p>
         </div>
       </NavLink>
-      <NavLink to='/movies'>
-        <div className="flex text-white flex-col items-center justify-center">
+      <NavLink to="/tvseries">
+        <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-white flex-col items-center justify-center">
+          <PiTelevisionLight />
+          <p className=" font-medium">TV Shows</p>
+        </div>
+      </NavLink>
+      <NavLink to="/movies">
+        <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-white flex-col items-center justify-center">
           <MdLocalMovies />
-          <p className=" font-semibold">Movies</p>
+          <p className=" font-medium">Movies</p>
         </div>
       </NavLink>
-      <NavLink to='/TVshows'>
-      <div className="flex text-white flex-col items-center justify-center">
-        <PiTelevisionLight />
-        <p className=" font-semibold">TV Shows</p>
-      </div>
+
+      <NavLink to="/search">
+        <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-white flex-col items-center justify-center">
+          <FaSearch />
+          <p className=" font-medium">Search</p>
+        </div>
       </NavLink>
-      <NavLink to='/search'>
-      <div className="flex text-white flex-col items-center justify-center">
-        <FaSearch />
-        <p className=" font-semibold">Search</p>
-      </div>
-      </NavLink>
-      
     </div>
   );
 }

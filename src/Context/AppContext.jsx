@@ -4,36 +4,33 @@ import axios from "axios";
 export const AppContext = createContext();
 
 export default function AppContextProvider({children}){
+
     const API_KEY = import.meta.env.VITE_APP_API_KEY;
-    const[category,setCategory] = useState('all')
-    const baseURL = `https://api.themoviedb.org/3/trending/${category}/day?api_key=${API_KEY}`;
     const[loading,setLoading] = useState(false);
-    const[movies,setMovies] = useState([])
-    const[page,setPage]=useState(1);
+    
+    
+    const[totalPages,setTotalPages] = useState(null);
+
     //data filling
-    async function fetchData(page = 1){
+    async function fetchData(url){
+        const URL = `${url}?api_key=${API_KEY}&page=${page}`;
         setLoading(true);
-        let url = `${baseURL}&page=${page}` ;
         try{
-            const res = await axios.get(url) ;
-            const data =await  res.data ;
-            console.log(data.results) ;
+            const res = await axios.get(URL) ;
+            const data = res.data;
+            setTotalPages(data.total_pages);
             setPage(data.page);
-            setMovies(prevMovies => [...prevMovies, ...data.results]);    
+            setMovies([...data.results]);  
         }
         catch(error){
-            console.log(error);
+            console.log(error); 
         }
         setLoading(false);
     }
 
-    function handlePageChange(page){ 
-        setPage(page);
-        fetchData(page);
-    }
 
     const value={
-        baseURL,loading,setLoading,handlePageChange,fetchData,setMovies,movies,page,setPage,category,setCategory
+        loading,setLoading,setTotalPages,totalPages,API_KEY
     }
     return <AppContext.Provider value={value}> {children} </AppContext.Provider>
 }

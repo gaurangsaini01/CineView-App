@@ -9,17 +9,13 @@ import Search from './Pages/Search';
 import TVshows from './Pages/TVshows';
 
 function App() {
-  const {fetchData} = useContext(AppContext);
-  useEffect(()=>{
-    fetchData();
-  },[])
   return (
-    <div className='flex flex-col items-center bg-gray-200'>
+    <div className='flex flex-col items-center bg-white'>
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/' element={<Home></Home>} />
         <Route path="/movies" element={<Movies></Movies>} />
-        <Route path="/TVshows" element={<TVshows></TVshows>} />
+        <Route path="/tvseries" element={<TVshows></TVshows>} />
         <Route path="/search" element={<Search></Search>} /> 
       </Routes>
       <Footer/>
