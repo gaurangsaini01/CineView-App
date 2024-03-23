@@ -34,7 +34,7 @@ function TVshows() {
   useEffect(() => {
     fetchData();
   }, [page, genreForUrl]);
-  console.log(movies);
+ 
   return (
     <div className="flex mb-4 flex-col items-center w-full xl:w-10/12">
       <div className="w-full py-2 text-sm sm:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
