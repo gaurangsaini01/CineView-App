@@ -4,18 +4,17 @@ import Loader from "../Components/Loader";
 import Tvcard from "../Components/Tvcard";
 import { Pagination } from "antd";
 import axios from "axios";
-import Genre from '../Components/Genre'
-import useGenres from '../hooks/useGenres'
+import Genre from "../Components/Genre";
+import useGenres from "../hooks/useGenres";
 function TVshows() {
   const tvURL = "https://api.themoviedb.org/3/discover/tv";
 
   const [movies, setMovies] = useState([]);
-  const[genreList,setGenreList] = useState([]);
-  const[selectedGenre,setSelectedGenre] = useState([]);
+  const [genreList, setGenreList] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState([]);
   const [page, setPage] = useState(1);
-  const genreForUrl = useGenres(selectedGenre)
+  const genreForUrl = useGenres(selectedGenre);
 
-  
   const { setLoading, loading, API_KEY } = useContext(AppContext);
 
   async function fetchData() {
@@ -34,14 +33,23 @@ function TVshows() {
 
   useEffect(() => {
     fetchData();
-  }, [page,genreForUrl]);
-  console.log(movies)
+  }, [page, genreForUrl]);
+  console.log(movies);
   return (
     <div className="flex mb-4 flex-col items-center w-full xl:w-10/12">
       <div className="w-full py-2 text-sm sm:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
         <h2>Discover Popular TV Shows</h2>
       </div>
-      <div><Genre genreList={genreList} setGenreList={setGenreList} selectedGenre={selectedGenre} setSelectedGenre ={setSelectedGenre} type='tv' setPage={setPage}></Genre></div>
+      <div>
+        <Genre
+          genreList={genreList}
+          setGenreList={setGenreList}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={setSelectedGenre}
+          type="tv"
+          setPage={setPage}
+        ></Genre>
+      </div>
       {loading ? (
         <div className="w-full h-[70vh] flex justify-center items-center">
           <Loader></Loader>
@@ -54,7 +62,7 @@ function TVshows() {
         </div>
       )}
       <div className=" p-3 rounded-2xl bg-richblack-200 text-white sm:my-7">
-        <Pagination 
+        <Pagination
           onChange={(_page) => setPage(_page)}
           showQuickJumper
           defaultCurrent={page}

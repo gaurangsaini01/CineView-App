@@ -20,12 +20,13 @@ function Search() {
 
   function fetchData() {
     setLoading(true);
-    axios.get(searchURL)
-      .then(res => {
+    axios
+      .get(searchURL)
+      .then((res) => {
         const data = res.data;
         setMovies([...data.results]);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       })
       .finally(() => {
@@ -42,7 +43,6 @@ function Search() {
   }, [search]);
 
   return (
-    
     <div className="w-full min-h-[100vh] h-fit flex items-center flex-col">
       <div className="flex w-11/12 sm:w-10/12 gap-3 sm:gap-10 my-2 sm:my-6 justify-center">
         <input
@@ -89,8 +89,7 @@ function Search() {
           : movies?.map((movie) => (
               <Tvcard key={movie.id} movie={movie}></Tvcard>
             ))}
-      </div> 
-      
+      </div>
     </div>
   );
 }
