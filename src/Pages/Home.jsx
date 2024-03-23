@@ -7,7 +7,7 @@ import axios from "axios";
 
 function Home() {
 
-  let trendingUrl = `https://api.themoviedb.org/3/trending/all/day`;
+  let trendingUrl = `https://api.themoviedb.org/3/trending/all/week`;
   const[movies,setMovies] = useState([]);
   const[page,setPage] = useState(1);
   const {setLoading,loading,API_KEY} = useContext(AppContext);
@@ -34,9 +34,9 @@ function Home() {
   
   // console.log(movies);
   return (
-    <div className="flex flex-col w-full xl:w-10/12 mb-4">
-      <div className="w-full  text-sm py-5 md:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
-        <h2>Weekly Trending Movies & Web-Series !</h2>
+    <div className="flex flex-col items-center w-full xl:w-10/12 mb-4">
+      <div className="w-full mb-1 text-sm py-5 md:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
+        <h2>Weekly Trending Movies & TV-Series !</h2>
       </div>
       {loading ? (
         <div className="h-[70vh] flex justify-center items-center">
@@ -50,8 +50,8 @@ function Home() {
         </div>
       )}
       
-      <div className="w-[90vw] my-7 flex justify-center items-center">
-        <Pagination
+      <div className=" p-3 rounded-2xl bg-richblack-200 text-white sm:my-7">
+        <Pagination 
           onChange={(_page) => setPage(_page)}
           showQuickJumper
           defaultCurrent={page}

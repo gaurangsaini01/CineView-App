@@ -10,7 +10,7 @@ import TVshows from './Pages/TVshows';
 
 function App() {
   return (
-    <div className='flex flex-col items-center bg-white'>
+    <div className='flex flex-col items-center bg-richblack-900'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>} />

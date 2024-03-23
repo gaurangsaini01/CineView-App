@@ -10,6 +10,7 @@ function TVshows() {
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  
   const { setLoading, loading, API_KEY } = useContext(AppContext);
 
   async function fetchData() {
@@ -31,7 +32,7 @@ function TVshows() {
   }, [page]);
 
   return (
-    <div className="flex mb-4 flex-col  w-full xl:w-10/12">
+    <div className="flex mb-4 flex-col items-center w-full xl:w-10/12">
       <div className="w-full py-2 text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
         <h2>Discover Popular TV Shows</h2>
       </div>
@@ -46,8 +47,8 @@ function TVshows() {
           ))}
         </div>
       )}
-      <div className="w-[90vw] my-7 flex justify-center items-center">
-        <Pagination
+      <div className=" p-3 rounded-2xl bg-richblack-200 text-white sm:my-7">
+        <Pagination 
           onChange={(_page) => setPage(_page)}
           showQuickJumper
           defaultCurrent={page}
