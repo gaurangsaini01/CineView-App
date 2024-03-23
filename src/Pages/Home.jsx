@@ -6,8 +6,7 @@ import { Pagination } from "antd";
 import axios from "axios";
 
 function Home() {
-
-  let trendingUrl = `https://api.themoviedb.org/3/trending/all/week`;
+  let trendingUrl = `https://api.themoviedb.org/3/trending/all/day`;
   const[movies,setMovies] = useState([]);
   const[page,setPage] = useState(1);
   const {setLoading,loading,API_KEY} = useContext(AppContext);
@@ -27,12 +26,11 @@ function Home() {
     }
     setLoading(false);
   }
-
+console.log(movies)
   useEffect(() => {
     fetchData();
   }, [page]);
-  
-  // console.log(movies);
+console.log(movies)
   return (
     <div className="flex flex-col items-center w-full xl:w-10/12 mb-4">
       <div className="w-full mb-1 text-sm py-5 md:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
@@ -50,7 +48,7 @@ function Home() {
         </div>
       )}
       
-      <div className=" p-3 rounded-2xl bg-richblack-200 text-white sm:my-7">
+      <div className="mt-4 rounded-2xl bg-richblack-200 text-white sm:my-7">
         <Pagination 
           onChange={(_page) => setPage(_page)}
           showQuickJumper

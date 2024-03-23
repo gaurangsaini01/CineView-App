@@ -11,6 +11,7 @@ export default function AppContextProvider({children}){
     const value={
         loading,setLoading,API_KEY
     }
+    
     return <AppContext.Provider value={value}> {children} </AppContext.Provider>
 }
 

@@ -4,16 +4,21 @@ import Loader from "../Components/Loader";
 import MovieCard from "../Components/MovieCard";
 import { Pagination } from "antd";
 import axios from "axios";
+import Genre from '../Components/Genre'
+import useGenres from '../hooks/useGenres'
 
 function Movies() {
-  const movieURL = 'https://api.themoviedb.org/3/discover/movie';
-  
+  const {setLoading,loading,API_KEY} = useContext(AppContext);
+  const[genreList,setGenreList] = useState([]);
+  const[selectedGenre,setSelectedGenre] = useState([]);
   const[movies,setMovies] = useState([]);
   const[page,setPage] = useState(1);
-  const {setLoading,loading,API_KEY} = useContext(AppContext);
+  const genreForUrl = useGenres(selectedGenre)
+
+  const movieURL = `https://api.themoviedb.org/3/discover/movie`;
 
   async function fetchData(){
-    const URL = `${movieURL}?api_key=${API_KEY}&page=${page}`;
+    const URL = `${movieURL}?api_key=${API_KEY}&page=${page}&with_genres=${genreForUrl}`;
     setLoading(true);
     try{
         const res = await axios.get(URL) ;
@@ -29,25 +34,15 @@ function Movies() {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
- 
+  }, [page,genreForUrl]);
+  console.log(movies)
   return (
     <div className="flex mb-4 flex-col items-center w-full xl:w-10/12">
-      <div className="w-full py-2 text-2xl mb-1 text-gray-600 font-semibold md:py-4 flex justify-center items-center">
+      <div className="w-full py-2 text-sm sm:text-2xl mb-1 text-gray-600 font-semibold md:py-4 flex justify-center items-center">
         <h2>Discover Popular Movies</h2>
       </div>
+     <div><Genre genreList={genreList} setGenreList={setGenreList} selectedGenre={selectedGenre} setSelectedGenre ={setSelectedGenre} type='movie' setPage={setPage}></Genre></div>
      
-      {/* <div>
-        {
-          genreList > 0?
-          (<div>No Filters Available</div>):
-          (<div className="flex overflow-scroll sm:overflow-hidden sm:flex-wrap justify-center sm:justify-start items-center mb-6 sm:pl-5 gap-2 sm:gap-5">
-            {genreList.map((genre)=>(
-              <div onClick={()=>genreHandler(genre.id)} className="border-2 cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-[#060d17] text-gray-200 w-13 rounded-xl text-xs sm:text-sm px-3 py-1 border-black " key={genre.id}>{genre.name}</div>
-            ))}
-          </div>)
-        }
-      </div> */}
       {loading ? (
         <div className="w-full h-[75vh] flex justify-center items-center">
           <Loader></Loader>

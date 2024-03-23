@@ -11,26 +11,26 @@ function Footer() {
       <NavLink to="/">
         <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-richblack-5 flex-col items-center justify-center">
           <FaFire />
-          <p className=" font-medium">Trending</p>
+          <p className="text-sm sm:text-base font-medium">Trending</p>
         </div>
       </NavLink>
       <NavLink to="/tvseries">
         <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-richblack-5 flex-col items-center justify-center">
           <PiTelevisionLight />
-          <p className=" font-medium">TV Shows</p>
+          <p className="text-sm sm:text-base font-medium">TV Shows</p>
         </div>
       </NavLink>
       <NavLink to="/movies">
         <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-richblack-5 flex-col items-center justify-center">
           <MdLocalMovies />
-          <p className=" font-medium">Movies</p>
+          <p className="text-sm sm:text-base font-medium">Movies</p>
         </div>
       </NavLink>
 
       <NavLink to="/search">
         <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-richblack-5 flex-col items-center justify-center">
           <FaSearch />
-          <p className=" font-medium">Search</p>
+          <p className="text-sm sm:text-base font-medium">Search</p>
         </div>
       </NavLink>
     </div>
