@@ -13,7 +13,7 @@ function Home() {
   const {setLoading,loading,API_KEY} = useContext(AppContext);
 
   async function fetchData(){
-    
+
     const URL = `${trendingUrl}?api_key=${API_KEY}&page=${page}`;
     setLoading(true);
     try{
