@@ -1,7 +1,8 @@
 import { React, useEffect, useContext, useState } from "react";
 import axios from "axios";
-import MovieCard from "../Components/MovieCard";
-import Tvcard from "../Components/Tvcard";
+import MovieCard from "../../Components/MovieCard";
+import Tvcard from "../../Components/Tvcard";
+import { NavLink } from "react-router-dom";
 
 function Search() {
   const API_KEY = import.meta.env.VITE_APP_API_KEY;
@@ -37,7 +38,7 @@ function Search() {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       fetchData();
-    }, 500);
+    }, 800);
 
     return () => clearTimeout(delayDebounceFn);
   }, [search]);
@@ -84,10 +85,10 @@ function Search() {
       <div className="flex flex-wrap items-center justify-center mb-4 gap-y-[4vh] md:gap-y-[6vh] gap-x-[3vw]">
         {type === "movie"
           ? movies?.map((movie) => (
-              <MovieCard key={movie.id} movie={movie}></MovieCard>
+            <NavLink key={movie.id} to={`/MovieDesc/${movie.id}`}><MovieCard key={movie.id} movie={movie}></MovieCard></NavLink>
             ))
           : movies?.map((movie) => (
-              <Tvcard key={movie.id} movie={movie}></Tvcard>
+            <NavLink key={movie.id} to={`/TVdesc/${movie.id}`}><Tvcard key={movie.id} movie={movie}></Tvcard></NavLink>
             ))}
       </div>
     </div>

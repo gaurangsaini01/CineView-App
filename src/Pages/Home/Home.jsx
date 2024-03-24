@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../Context/AppContext";
-import Loader from "../Components/Loader";
-import TrendingCard from "../Components/TrendingCard";
+import { AppContext } from "../../Context/AppContext";
+import Loader from "../../Components/Loader";
+import TrendingCard from "../../Components/TrendingCard";
 import { Pagination } from "antd";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 function Home() {
@@ -28,7 +29,7 @@ function Home() {
   useEffect(() => {
     fetchData();
   }, [page]);
-  
+  console.log(movies)
   return (
     <div className="flex flex-col items-center w-full xl:w-10/12 mb-4">
       <div className="w-full mb-1 text-sm py-5 md:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">
@@ -41,7 +42,7 @@ function Home() {
       ) : (
         <div className="flex flex-wrap items-center justify-center gap-y-[4vh] md:gap-y-[6vh] gap-x-[3vw]">
           {movies.map((movie) => (
-            <TrendingCard key={movie.id} movie={movie}></TrendingCard>
+            <NavLink to={movie?.media_type === 'tv' ? `/TVdesc/${movie.id}` : `/MovieDesc/${movie.id}`} key={movie.id} ><TrendingCard movie={movie}></TrendingCard></NavLink>
           ))}
         </div>
       )}

@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../Context/AppContext";
-import Loader from "../Components/Loader";
-import Tvcard from "../Components/Tvcard";
+import { AppContext } from "../../Context/AppContext";
+import Loader from "../../Components/Loader";
+import Tvcard from "../../Components/Tvcard";
 import { Pagination } from "antd";
 import axios from "axios";
-import Genre from "../Components/Genre";
-import useGenres from "../hooks/useGenres";
+import Genre from "../../Components/Genre";
+import useGenres from "../../hooks/useGenres";
+import { NavLink } from "react-router-dom";
+
 function TVshows() {
   const tvURL = "https://api.themoviedb.org/3/discover/tv";
 
@@ -57,7 +59,7 @@ function TVshows() {
       ) : (
         <div className="flex flex-wrap items-center justify-center gap-y-[4vh] md:gap-y-[6vh] gap-x-[3vw]">
           {movies.map((movie) => (
-            <Tvcard key={movie.id} movie={movie}></Tvcard>
+            <NavLink key={movie.id} to={`/TVdesc/${movie.id}`}><Tvcard  movie={movie}></Tvcard> </NavLink>
           ))}
         </div>
       )}

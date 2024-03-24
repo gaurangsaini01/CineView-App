@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../Context/AppContext";
-import Loader from "../Components/Loader";
-import MovieCard from "../Components/MovieCard";
+import { AppContext } from "../../Context/AppContext";
+import Loader from "../../Components/Loader";
+import MovieCard from "../../Components/MovieCard";
 import { Pagination } from "antd";
 import axios from "axios";
-import Genre from "../Components/Genre";
-import useGenres from "../hooks/useGenres";
+import Genre from "../../Components/Genre";
+import { NavLink } from "react-router-dom";
+import useGenres from "../../hooks/useGenres";
 
 function Movies() {
+  
   const { setLoading, loading, API_KEY } = useContext(AppContext);
   const [genreList, setGenreList] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
@@ -56,9 +58,9 @@ function Movies() {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="flex flex-wrap items-center justify-center gap-y-[4vh] md:gap-y-[6vh] gap-x-[3vw]">
+        <div  className="flex flex-wrap items-center justify-center gap-y-[4vh] md:gap-y-[6vh] gap-x-[3vw]">
           {movies?.map((movie) => (
-            <MovieCard key={movie.id} movie={movie}></MovieCard>
+           <NavLink key={movie.id} to={`/MovieDesc/${movie.id}`}> <MovieCard  movie={movie}></MovieCard> </NavLink>
           ))}
         </div>
       )}
