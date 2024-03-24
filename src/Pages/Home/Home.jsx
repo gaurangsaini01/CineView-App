@@ -29,7 +29,7 @@ function Home() {
   useEffect(() => {
     fetchData();
   }, [page]);
-  console.log(movies)
+
   return (
     <div className="flex flex-col items-center w-full xl:w-10/12 mb-4">
       <div className="w-full mb-1 text-sm py-5 md:text-2xl text-gray-600 font-semibold md:py-4 flex justify-center items-center">

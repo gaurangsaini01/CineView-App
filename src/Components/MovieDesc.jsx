@@ -24,7 +24,6 @@ function MovieDesc() {
     }
   }
 
-  console.log(movie);
   useEffect(() => {
     fetchData();
   }, []);
@@ -53,14 +52,14 @@ function MovieDesc() {
       {/* details box */}
       <div className="flex sm:flex-row sm:h-fit items-center justify-center sm:items-start mt-4 sm:mt-7 flex-col w-full sm:justify-evenly">
         {/* image div */}
-        <div className="sm:w-1/3 mt-3 sm:mt-0 flex justify-center">
+        <div className="sm:w-1/3 mt-3 mb-5 sm:mt-0  flex justify-center">
           <img
             className="w-[200px] rounded-xl sm:w-[300px]"
             src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
             alt="Movie Image"
           />
         </div>
-        <div className="sm:w-2/3 pr-14 sm:h-fit  sm:pl-0 flex flex-col gap-4 sm:gap-5">
+        <div className="sm:w-2/3 mb-4 sm:mb-2 pr-14 sm:h-fit  sm:pl-0 flex flex-col gap-4 sm:gap-5">
           <div className="sm:text-4xl text-base font-lagao sm:tracking-wide text-richblack-25 sm:mb-6">"{movie?.overview}"</div>
           <div className="flex items-center">
             <span className="font-bold sm:text-2xl text-richblack-25 text-base">Genres - </span>
