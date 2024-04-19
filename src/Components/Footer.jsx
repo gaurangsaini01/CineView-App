@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFire } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { MdOutlineQuiz } from "react-icons/md";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionLight } from "react-icons/pi";
 import { NavLink } from "react-router-dom";
@@ -33,6 +34,12 @@ function Footer() {
           <p className="text-sm sm:text-base font-medium">Search</p>
         </div>
       </NavLink>
+      {/* <NavLink to="/quiz">
+        <div className="flex transition-all duration-300 ease-in-out hover:text-[#01b4e4] text-richblack-5 flex-col items-center justify-center">
+          <MdOutlineQuiz />
+          <p className="text-sm sm:text-base font-medium">Quiz</p>
+        </div>
+      </NavLink> */}
     </div>
   );
 }

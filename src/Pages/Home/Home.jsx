@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 function Home() {
-  let trendingUrl = `https://api.themoviedb.org/3/trending/all/day`;
+  let trendingUrl = `https://api.themoviedb.org/3/trending/all/week`;
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const { setLoading, loading, API_KEY } = useContext(AppContext);

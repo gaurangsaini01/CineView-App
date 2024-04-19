@@ -1,7 +1,6 @@
 import React from "react";
 
 function TrendingCard({ movie }) {
-
   return (
     <div className="flex flex-col h-[350px] bg-gray-700 w-[200px] hover:scale-105 shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] hover:bg-gray-600 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] justify-evenly transition-all duration-300 ease-in-out  p-3 relative rounded-xl text-gray-200 cursor-pointer items-center ">
       <div
